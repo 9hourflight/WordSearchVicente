@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSearch", "WordSearch\WordSearch.csproj", "{41FED8AB-967D-4454-B533-1EB502FE88B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFile", "WordSearch\TextFile.csproj", "{41FED8AB-967D-4454-B533-1EB502FE88B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSearch", "puzzle\WordSearch.csproj", "{7BA5833C-087B-4DF6-8B17-8D56B0827C05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{41FED8AB-967D-4454-B533-1EB502FE88B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41FED8AB-967D-4454-B533-1EB502FE88B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41FED8AB-967D-4454-B533-1EB502FE88B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA5833C-087B-4DF6-8B17-8D56B0827C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA5833C-087B-4DF6-8B17-8D56B0827C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA5833C-087B-4DF6-8B17-8D56B0827C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA5833C-087B-4DF6-8B17-8D56B0827C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
