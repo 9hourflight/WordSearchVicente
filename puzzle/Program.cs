@@ -8,26 +8,26 @@ namespace puzzle
             StreamReader categoryReader = new StreamReader("words.txt");
             string? allText = categoryReader.ReadLine();
             string[] allTextAndCategories = new string[160];
-            int indexCounter = 0;
+            int allTextIndexCounter = 0;
             while(allText != null)
             {
-                allTextAndCategories[indexCounter] = allText;
+                allTextAndCategories[allTextIndexCounter] = allText;
                 allText = categoryReader.ReadLine();
-                indexCounter++;
+                allTextIndexCounter++;
             }
             categoryReader.Close();
-            //Console.WriteLine(allTextAndCategories[0]);
-            //Console.WriteLine(allTextAndCategories[159]);
-            string[] categories = new string[14];
-            indexCounter = 0;
-            for(indexCounter = 0; indexCounter < allTextAndCategories.Length; indexCounter++)
+            string[] categories = new string[10];
+            int categoriesIndexCounter = 0;
+            allTextIndexCounter = 0;
+            for (allTextIndexCounter = 0; allTextIndexCounter < allTextAndCategories.Length; allTextIndexCounter++)
             {
-                if (indexCounter % 16 == 0)
+                if (allTextIndexCounter % 16 == 0)
                 {
-                    Console.WriteLine(allTextAndCategories[indexCounter]);
+                    categories[categoriesIndexCounter] = allTextAndCategories[allTextIndexCounter];
+                    categoriesIndexCounter++;
                 }
             }
-           
+            
             
             string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g","h", "i", "j", "k", "l", "m","n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
             string[,] wordSearchBoard = new string[20, 20];
@@ -40,6 +40,10 @@ namespace puzzle
 
                 while (isChoosing)
                 {
+                    for (int i = 0; i < categories.Length; i++)
+                    {
+                       Console.WriteLine(categories[i]);
+                    }
                     Console.WriteLine("Please enter one of the above categories to begin your wordsearch.");
                     string? chosenCategory = Console.ReadLine();
                     if (chosenCategory == null)
