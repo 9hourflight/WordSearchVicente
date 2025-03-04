@@ -1,5 +1,4 @@
-﻿using System.IO;
-namespace puzzle
+﻿namespace puzzle
 {
     internal class Program
     {
@@ -30,10 +29,11 @@ namespace puzzle
             
             
             string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g","h", "i", "j", "k", "l", "m","n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-            string[,] wordSearchBoard = new string[20, 20];
+            string[] wordSearchBoard = new string[20];
             bool isChoosing = true;
             bool isPlaying = true;
             Random randomize = new Random();
+            string chosenCategory;
 
             while (isPlaying)
             {
@@ -45,17 +45,17 @@ namespace puzzle
                        Console.WriteLine(categories[i]);
                     }
                     Console.WriteLine("Please enter one of the above categories to begin your wordsearch.");
-                    string? chosenCategory = Console.ReadLine();
-                    if (chosenCategory == null)
+                    string? userEntry = Console.ReadLine();
+                    foreach(string i in categories)
                     {
-                        Console.WriteLine("Invalid input, try again.");
-                        isChoosing = false;
-                    }
-                    //else if (chosenCategory ==)
-                    {
-
+                        if (userEntry == i)
+                        {
+                            chosenCategory = i;
+                            isChoosing = false;
+                        }
                     }
                 }
+                Console.WriteLine("you are here");
             }
            
         }
