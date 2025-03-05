@@ -1,4 +1,5 @@
-﻿namespace puzzle
+﻿using System.Collections.Generic;
+namespace puzzle
 {
     internal class Program
     {
@@ -40,13 +41,24 @@
             bool isChoosing = true;
             Random randomize = new Random();
             string chosenCategory;
-            string[] possibleWords = new string[15];
+            
             int rangeMin = 1;
             int rangeMaxOrientation = 3;
             int rangeMaxBackOrForward = 2;
             int wordOrientation = randomize.Next(rangeMin, rangeMaxOrientation);
             int wordBackOrForward = randomize.Next(rangeMin, rangeMaxBackOrForward);
-
+            int wordsRange = 15;
+            Dictionary<string, string> wordPossibilities = new Dictionary<string, string>();
+            wordPossibilities.Add("minecraftBiomes", onlyWords[0]);
+            wordPossibilities.Add("avatarCharacters", onlyWords[15]);
+            wordPossibilities.Add("undertaleCharacters", onlyWords[30]);
+            wordPossibilities.Add("tarotCards", onlyWords[45]);
+            wordPossibilities.Add("breathOfTheWildCategories", onlyWords[60]);
+            wordPossibilities.Add("texasWildFlowers", onlyWords[75]);
+            wordPossibilities.Add("darkSoulsStats", onlyWords[90]);
+            wordPossibilities.Add("austinVenues", onlyWords[105]);
+            wordPossibilities.Add("desserts", onlyWords[120]);
+            wordPossibilities.Add("appsOnMyPhone", onlyWords[135]);
 
             while (isChoosing)
             {
