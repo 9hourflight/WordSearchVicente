@@ -17,18 +17,27 @@
             categoryReader.Close();
             string[] categories = new string[10];
             int categoriesIndexCounter = 0;
+            int spaceBetweenCategories = 16;
+            string[] onlyWords = new string[150];
+            int wordsIndexCounter = 0;
             for (allTextIndexCounter = 0; allTextIndexCounter < allTextAndCategories.Length; allTextIndexCounter++)
             {
-                if (allTextIndexCounter % 16 == 0)
+                if (allTextIndexCounter % spaceBetweenCategories == 0)
                 {
                     categories[categoriesIndexCounter] = allTextAndCategories[allTextIndexCounter];
                     categoriesIndexCounter++;
                 }
+                if(allTextIndexCounter > 0 && allTextIndexCounter % spaceBetweenCategories != 0)
+                {
+                    onlyWords[wordsIndexCounter] = allTextAndCategories[allTextIndexCounter];
+                    wordsIndexCounter++;
+                }
+
             }
+           
             string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-            string[] wordSearchBoard = new string[20];
+            string[] wordSearchBoard = new string[21];
             bool isChoosing = true;
-            bool isPlaying = true;
             Random randomize = new Random();
             string chosenCategory;
             string[] possibleWords = new string[15];
