@@ -40,25 +40,25 @@ namespace puzzle
             string[] wordSearchBoard = new string[21];
             bool isChoosing = true;
             Random randomize = new Random();
-            string chosenCategory;
+            int chosenCategoryIndexValue;
             
             int rangeMin = 1;
             int rangeMaxOrientation = 3;
             int rangeMaxBackOrForward = 2;
             int wordOrientation = randomize.Next(rangeMin, rangeMaxOrientation);
             int wordBackOrForward = randomize.Next(rangeMin, rangeMaxBackOrForward);
-            int wordsRange = 15;
-            Dictionary<string, string> wordPossibilities = new Dictionary<string, string>();
-            wordPossibilities.Add("minecraftBiomes", onlyWords[0]);
-            wordPossibilities.Add("avatarCharacters", onlyWords[15]);
-            wordPossibilities.Add("undertaleCharacters", onlyWords[30]);
-            wordPossibilities.Add("tarotCards", onlyWords[45]);
-            wordPossibilities.Add("breathOfTheWildCategories", onlyWords[60]);
-            wordPossibilities.Add("texasWildFlowers", onlyWords[75]);
-            wordPossibilities.Add("darkSoulsStats", onlyWords[90]);
-            wordPossibilities.Add("austinVenues", onlyWords[105]);
-            wordPossibilities.Add("desserts", onlyWords[120]);
-            wordPossibilities.Add("appsOnMyPhone", onlyWords[135]);
+            int wordsPerCategory = 15;
+            Dictionary<string, int> wordPossibilities = new Dictionary<string, int>();
+            wordPossibilities.Add("minecraftBiomes", 0);
+            wordPossibilities.Add("avatarCharacters", 15);
+            wordPossibilities.Add("undertaleCharacters", 30);
+            wordPossibilities.Add("tarotCards", 45);
+            wordPossibilities.Add("breathOfTheWildCategories", 60);
+            wordPossibilities.Add("texasWildFlowers", 75);
+            wordPossibilities.Add("darkSoulsStats", 90);
+            wordPossibilities.Add("austinVenues", 105);
+            wordPossibilities.Add("desserts", 120);
+            wordPossibilities.Add("appsOnMyPhone", 135);
 
             while (isChoosing)
             {
@@ -70,12 +70,29 @@ namespace puzzle
                 string? userEntry = Console.ReadLine();
                 foreach (string i in categories)
                 {
-                    if (userEntry == i)
+                    if (userEntry != null && wordPossibilities.ContainsKey(userEntry))
                     {
+                        
+                        wordPossibilities.TryGetValue(userEntry, out int chosenCategory);
+                        chosenCategoryIndexValue = chosenCategory;
                         isChoosing = false;
-                        chosenCategory = userEntry;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input, try again.");
                     }
                 }
+            }
+            if (wordPossibilities.ContainsKey(chosenCategory))
+            {
+                //add iteration loop to get words in category
+                for(int i = 0; i < wordsPerCategory; i++)
+                {
+
+                }
+                //randomize 8 words with no repeats from category. Maybe make this and the above
+                //
+                //for loop a function
             }
             //switch for word direction
             switch (wordOrientation)
@@ -96,6 +113,7 @@ namespace puzzle
                     break;
             }
 
+            //place words in grid then randomize all the empty slots
         }
     }
 }
