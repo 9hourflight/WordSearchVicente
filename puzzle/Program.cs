@@ -40,7 +40,7 @@ namespace puzzle
             string[] wordSearchBoard = new string[21];
             bool isChoosing = true;
             Random randomize = new Random();
-            int chosenCategoryIndexValue;
+            int chosenCategoryIndexValue = 0;
             
             int rangeMin = 1;
             int rangeMaxOrientation = 3;
@@ -60,6 +60,7 @@ namespace puzzle
             wordPossibilities.Add("desserts", 120);
             wordPossibilities.Add("appsOnMyPhone", 135);
 
+            
             while (isChoosing)
             {
                 for (int i = 0; i < categories.Length; i++)
@@ -68,8 +69,6 @@ namespace puzzle
                 }
                 Console.WriteLine("Please enter one of the above categories to begin your wordsearch.");
                 string? userEntry = Console.ReadLine();
-                foreach (string i in categories)
-                {
                     if (userEntry != null && wordPossibilities.ContainsKey(userEntry))
                     {
                         
@@ -81,19 +80,18 @@ namespace puzzle
                     {
                         Console.WriteLine("Invalid input, try again.");
                     }
-                }
+                
             }
-            if (wordPossibilities.ContainsKey(chosenCategory))
-            {
-                //add iteration loop to get words in category
-                for(int i = 0; i < wordsPerCategory; i++)
+            Console.WriteLine(chosenCategoryIndexValue.ToString());
+               //add iteration loop to get words in category
+               for(int i = chosenCategoryIndexValue; i < wordsPerCategory; i++)
                 {
 
                 }
                 //randomize 8 words with no repeats from category. Maybe make this and the above
                 //
                 //for loop a function
-            }
+            
             //switch for word direction
             switch (wordOrientation)
             {
