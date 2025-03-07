@@ -36,16 +36,19 @@
             }
 
             string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-            string[] wordSearchBoard = new string[21];
+            string[] wordSearchBoard = { ".....................", ".....................", ".....................", ".....................",
+                ".....................", ".....................", ".....................", ".....................", ".....................",
+                ".....................", ".....................", ".....................", ".....................", ".....................",
+                ".....................", ".....................", ".....................", ".....................", ".....................",
+                ".....................", };
             bool isChoosing = true;
-            Random random = new Random();
+            Random random = new();
             int chosenCategoryIndexValue = 0;
 
             int rangeMin = 1;
             int rangeMaxOrientation = 3;
             int rangeMaxBackOrForward = 2;
-            int wordOrientation = random.Next(rangeMin, rangeMaxOrientation);
-            int wordBackOrForward = random.Next(rangeMin, rangeMaxBackOrForward);
+            
             int wordsPerCategory = 15;
             string[] eightWords = new string [8];
             Dictionary<string, int> wordPossibilities = new Dictionary<string, int>();
@@ -81,7 +84,6 @@
                 }
 
             }
-            Console.WriteLine(chosenCategoryIndexValue.ToString());
             //add iteration loop to get words in category
             string[] possibleWordsFifteen = new string[wordsPerCategory];
             int possibleWordIndex = 0;
@@ -103,30 +105,50 @@
                     j--;
                 }
             }
-            Console.WriteLine(eightWords[0] + " " + eightWords[7]);
-            
+            for(int i = 0; i < eightWords.Length; i++)
+            {
+                int wordOrientation = random.Next(rangeMin, rangeMaxOrientation);
+                int wordBackOrForward = random.Next(rangeMin, rangeMaxBackOrForward);
+
+                //switch for word direction
+                switch (wordOrientation)
+                {
+                    case 1:
+                        //horizontal
+                        int randomColumn = random.Next(2, 22);
+                        int randomRow = random.Next(1, 22);
+                        if(randomColumn + eightWords[i].Length < wordSearchBoard.Length)
+                        {
+                            wordSearchBoard[randomColumn] = wordSearchBoard[randomColumn].Substring(0, eightWords[i].Length) + eightWords[i] + wordSearchBoard[randomColumn].Substring(randomColumn + eightWords[i].Length);
+                        }
+                        else
+                        {
+                            i--;
+                        }
+                        break;
+                    case 2:
+                        //vertical
+                        break;
+                    case 3:
+                        //diagonal
+                        break;
+                }
+
+                switch (wordBackOrForward)
+                {
+                    case 1:
+                        //forward
+                        break;
+                    case 2:
+                        //backward
+                        break;
+                }
+            }
+            Console.Write(wordSearchBoard.ToString());
             //randomize 8 words with no repeats from category. Maybe make this and the above
             //
             //for loop a function
 
-            //switch for word direction
-            switch (wordOrientation)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
-
-            switch (wordBackOrForward)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-            }
 
             //place words in grid then randomize all the empty slots
         }
