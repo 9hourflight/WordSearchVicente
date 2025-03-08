@@ -46,7 +46,7 @@
             int chosenCategoryIndexValue = 0;
 
             int rangeMin = 1;
-            int rangeMaxOrientation = 3;
+            int rangeMaxOrientation = 4;
             int rangeMaxBackOrForward = 2;
             
             int wordsPerCategory = 15;
@@ -161,10 +161,10 @@
                         break;
                     case 3:
                         //diagonal
-                        if (randomRow + eightWords[i].Length < 20 && randomColumn + eightWords.Length < 20)
+                        if ((randomRow + eightWords[i].Length) < 20 && (randomColumn + eightWords.Length) < 20)
                         {
                             for (int j = 0; j < eightWords[i].Length; j++)
-                            {
+                            { 
                                 wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn + j) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
                             }
                         }
@@ -186,16 +186,9 @@
                 }
             }
             Array.ForEach(wordSearchBoard, Console.WriteLine);
-            //randomize 8 words with no repeats from category. Maybe make this and the above
-            //
-            //for loop a function
-
-
+          
             //place words in grid then randomize all the empty slots
         }
-        void HorizontalPlacement()
-        {
-
-        }
+       
     }
 }
