@@ -134,7 +134,7 @@
                                 }
                             }
                             */
-                            wordSearchBoard[randomRow] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomRow].Substring(randomColumn + eightWords[i].Length);
+                            //wordSearchBoard[randomRow] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomRow].Substring(randomColumn + eightWords[i].Length);
                         }
                         else
                         {
@@ -143,16 +143,20 @@
                         break;
                     case 2:
                         //vertical
-                        /*
+                        
                         if(randomRow + eightWords[i].Length < 20)
                         {
                            for(int j = 0; j < eightWords[i].Length; j++)
                            {
-                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomColumn].Substring(0, randomColumn) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomColumn].Substring(randomColumn + 1);
+                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
                            }
                             
                         }
-                        */
+                        else
+                        {
+                            i--;
+                        }
+                        
                         break;
                     case 3:
                         //diagonal
