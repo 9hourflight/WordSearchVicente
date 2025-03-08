@@ -109,15 +109,16 @@
             {
                 int wordOrientation = random.Next(rangeMin, rangeMaxOrientation);
                 int wordBackOrForward = random.Next(rangeMin, rangeMaxBackOrForward);
+                int randomColumn = random.Next(2, 23);
+                int randomRow = random.Next(1, 21);
 
                 //switch for word direction
                 switch (wordOrientation)
                 {
                     case 1:
                         //horizontal
-                        int randomColumn = random.Next(2, 22);
-                        //int randomRow = random.Next(1, 22);
-                        bool canPlace = true;
+                        
+                        //bool canPlace = true;
                         if(randomColumn + eightWords[i].Length < 20)
                         {
                             /*
@@ -133,7 +134,7 @@
                                 }
                             }
                             */
-                            wordSearchBoard[randomColumn] = wordSearchBoard[randomColumn].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomColumn].Substring(randomColumn + eightWords[i].Length);
+                            wordSearchBoard[randomRow] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomRow].Substring(randomColumn + eightWords[i].Length);
                         }
                         else
                         {
@@ -142,6 +143,16 @@
                         break;
                     case 2:
                         //vertical
+                        /*
+                        if(randomRow + eightWords[i].Length < 20)
+                        {
+                           for(int j = 0; j < eightWords[i].Length; j++)
+                           {
+                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomColumn].Substring(0, randomColumn) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomColumn].Substring(randomColumn + 1);
+                           }
+                            
+                        }
+                        */
                         break;
                     case 3:
                         //diagonal
