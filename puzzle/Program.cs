@@ -1,4 +1,6 @@
-﻿namespace puzzle
+﻿using System.Text;
+
+namespace puzzle
 {
     internal class Program
     {
@@ -34,21 +36,10 @@
                 }
 
             }
-
-            string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-            string[] wordSearchBoard = { "  ABCDEFGHIJKLMNOPQRST", "01....................", "02....................", "03....................",
-                "04....................", "05....................", "06....................", "07....................", "08....................",
-                "09....................", "10....................", "11....................", "12....................", "13....................",
-                "14....................", "15....................", "16....................", "17....................", "18....................",
-                "19....................","20....................", };
             bool isChoosing = true;
             Random random = new();
             int chosenCategoryIndexValue = 0;
 
-            int rangeMin = 1;
-            int rangeMaxOrientation = 4;
-            int rangeMaxBackOrForward = 2;
-            
             int wordsPerCategory = 15;
             string[] eightWords = new string [8];
             Dictionary<string, int> wordPossibilities = new Dictionary<string, int>();
@@ -105,7 +96,18 @@
                     j--;
                 }
             }
-            for(int i = 0; i < eightWords.Length; i++)
+            string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+            string[] wordSearchBoard = { "  ABCDEFGHIJKLMNOPQRST", "01....................", "02....................", "03....................",
+                "04....................", "05....................", "06....................", "07....................", "08....................",
+                "09....................", "10....................", "11....................", "12....................", "13....................",
+                "14....................", "15....................", "16....................", "17....................", "18....................",
+                "19....................","20....................", };
+            
+            int rangeMin = 1;
+            int rangeMaxOrientation = 4;
+            int rangeMaxBackOrForward = 2;
+
+            for (int i = 0; i < eightWords.Length; i++)
             {
                 int wordOrientation = random.Next(rangeMin, rangeMaxOrientation);
                 int wordBackOrForward = random.Next(rangeMin, rangeMaxBackOrForward);
@@ -164,8 +166,11 @@
                         if ((randomRow + eightWords[i].Length) < 20 && (randomColumn + eightWords.Length) < 20)
                         {
                             for (int j = 0; j < eightWords[i].Length; j++)
-                            { 
-                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn + j) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
+                            {
+                                StringBuilder row = new StringBuilder();    //create string builder "row"
+                                row.Append(wordSearchBoard[randomRow + j]); //copy row to string builder
+                                row[randomColumn + j] = eightWords[i][j];   //change specific character
+                                wordSearchBoard[randomRow + j] = row.ToString();    //copy back to row
                             }
                         }
                         else
