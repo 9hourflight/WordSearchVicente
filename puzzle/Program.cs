@@ -143,14 +143,15 @@
                         break;
                     case 2:
                         //vertical
-                        
+
                         if(randomRow + eightWords[i].Length < 20)
                         {
+                            /*
                            for(int j = 0; j < eightWords[i].Length; j++)
                            {
                                 wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
                            }
-                            
+                            */
                         }
                         else
                         {
@@ -160,7 +161,18 @@
                         break;
                     case 3:
                         //diagonal
-                        break;
+                        if (randomRow + eightWords[i].Length < 20 && randomColumn + eightWords.Length < 20)
+                        {
+                            for (int j = 0; j < eightWords[i].Length; j++)
+                            {
+                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn + j) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
+                            }
+                        }
+                        else
+                        {
+                            i--;
+                        }
+                     break;
                 }
 
                 switch (wordBackOrForward)
