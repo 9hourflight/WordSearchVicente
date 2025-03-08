@@ -120,23 +120,11 @@ namespace puzzle
                     case 1:
                         //horizontal
                         
-                        //bool canPlace = true;
+                        ;
                         if(randomColumn + eightWords[i].Length < 20)
                         {
-                            /*
-                            for(int j = randomColumn; j < randomColumn + eightWords[i].Length; j++)
-                            {
-                                if (wordSearchBoard[j] == ".")
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                            }
-                            */
-                            //wordSearchBoard[randomRow] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomRow].Substring(randomColumn + eightWords[i].Length);
+                            
+                            wordSearchBoard[randomRow] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomRow].Substring(randomColumn + eightWords[i].Length);
                         }
                         else
                         {
@@ -148,12 +136,15 @@ namespace puzzle
 
                         if(randomRow + eightWords[i].Length < 20)
                         {
-                            /*
+                            
                            for(int j = 0; j < eightWords[i].Length; j++)
                            {
-                                wordSearchBoard[randomRow + j] = wordSearchBoard[randomRow].Substring(0, randomColumn) + eightWords[i].Substring(j, 1) + wordSearchBoard[randomRow].Substring(randomColumn + 1);
-                           }
-                            */
+                                StringBuilder row = new StringBuilder();    //create string builder "row"
+                                row.Append(wordSearchBoard[randomRow + j]); //copy row to string builder
+                                row[randomColumn] = eightWords[i][j];   //change specific character
+                                wordSearchBoard[randomRow + j] = row.ToString();    //copy back to row
+                            }
+                            
                         }
                         else
                         {
