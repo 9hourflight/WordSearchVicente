@@ -36,11 +36,11 @@
             }
 
             string[] fillerLetters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-            string[] wordSearchBoard = { ".....................", ".....................", ".....................", ".....................",
-                ".....................", ".....................", ".....................", ".....................", ".....................",
-                ".....................", ".....................", ".....................", ".....................", ".....................",
-                ".....................", ".....................", ".....................", ".....................", ".....................",
-                ".....................", };
+            string[] wordSearchBoard = { "  ABCDEFGHIJKLMNOPQRST", "01....................", "02....................", "03....................",
+                "04....................", "05....................", "06....................", "07....................", "08....................",
+                "09....................", "10....................", "11....................", "12....................", "13....................",
+                "14....................", "15....................", "16....................", "17....................", "18....................",
+                "19....................","20....................", };
             bool isChoosing = true;
             Random random = new();
             int chosenCategoryIndexValue = 0;
@@ -116,10 +116,24 @@
                     case 1:
                         //horizontal
                         int randomColumn = random.Next(2, 22);
-                        int randomRow = random.Next(1, 22);
-                        if(randomColumn + eightWords[i].Length < wordSearchBoard.Length)
+                        //int randomRow = random.Next(1, 22);
+                        bool canPlace = true;
+                        if(randomColumn + eightWords[i].Length < 20)
                         {
-                            wordSearchBoard[randomColumn] = wordSearchBoard[randomColumn].Substring(0, eightWords[i].Length) + eightWords[i] + wordSearchBoard[randomColumn].Substring(randomColumn + eightWords[i].Length);
+                            /*
+                            for(int j = randomColumn; j < randomColumn + eightWords[i].Length; j++)
+                            {
+                                if (wordSearchBoard[j] == ".")
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                            */
+                            wordSearchBoard[randomColumn] = wordSearchBoard[randomColumn].Substring(0, randomColumn) + eightWords[i] + wordSearchBoard[randomColumn].Substring(randomColumn + eightWords[i].Length);
                         }
                         else
                         {
@@ -144,13 +158,17 @@
                         break;
                 }
             }
-            Console.Write(wordSearchBoard.ToString());
+            Array.ForEach(wordSearchBoard, Console.WriteLine);
             //randomize 8 words with no repeats from category. Maybe make this and the above
             //
             //for loop a function
 
 
             //place words in grid then randomize all the empty slots
+        }
+        void HorizontalPlacement()
+        {
+
         }
     }
 }
